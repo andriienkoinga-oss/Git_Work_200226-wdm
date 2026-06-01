@@ -11,11 +11,12 @@
 
 # Проверка, есть ли файлы с указанным расширением в исходной директории
 
-files=(find -type f name "*.$file_extension")
+
+files=$(find "$source_directory" -type f -name "*.$file_extension")
 
 if [ -z "$files" ]; then
-  echo "Ошибка: файлы с расширением .$file_extension не найдены в директории $source_directory"
-  exit 1
+    echo "Ошибка: файлы с расширением .$file_extension не найдены в директории $source_directory"
+    exit 1
 fi
 
 # Копирование файлов с указанным расширением в целевую директорию
