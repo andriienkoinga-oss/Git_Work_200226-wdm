@@ -5,14 +5,14 @@ AUTO_COMMIT=$(date +'%Y-%m-%d %H:%M:%S')
 
 if [ -z "$REPO" ]; then
   echo "Текущая директория не содержит репозиторий гит"
-  exit 
+  exit 1
 fi 
 
 git add .
 
-if [ git diff-index --quiet HEAD ]; then
+if git diff-index --quiet HEAD; then
   echo "Нет изменений для фиксации в репозитории Git"
-  exit
+  exit 1
 fi
 
 git commit -m "$AUTO_COMMIT"
